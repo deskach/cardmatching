@@ -5,9 +5,8 @@ import {Card} from "./card";
     selector: "cm-card",
     inputs: ['card'],
     template: `
-    <div class="cm-card">
-        {{card.id}}
-    </div>
+    <div class="cm-card" [hidden]="card.isFolded">{{card.id}}</div>
+    <div class="cm-card" [hidden]="!card.isFolded">#</div>
     `
 })
 export class CardComponent {

@@ -8,7 +8,6 @@ import {CardComponent} from "../card/card.component";
     <h2>Cards:</h2>
     <div class="cm-card-list">
       <div *ngFor="#card of cards"
-        [class.selected]="isSelected(card)"
         (click)="onSelect(card)">
         <cm-card [card]="card"></cm-card>
       </div>
@@ -19,13 +18,8 @@ import {CardComponent} from "../card/card.component";
 })
 export class CardListComponent implements OnInit {
     cards:Card[];
-    private _selectedId:number;
 
     constructor(private _service:CardService) {
-    }
-
-    isSelected(card:Card) {
-        return card.id === this._selectedId;
     }
 
     ngOnInit() {
@@ -34,6 +28,6 @@ export class CardListComponent implements OnInit {
     }
 
     onSelect(card:Card) {
-        console.log("Selected: " + card.id);
+        card.isFolded = !card.isFolded;
     }
 }

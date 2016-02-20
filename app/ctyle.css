@@ -7,6 +7,8 @@
 .cm-card {
     font-size: 10em;
     margin: 0.1em 0.2em 0 0;
+    padding: 0 0.1em 0 0.1em;
+    background-color: #66b8da;
     /*margin: 1em;*/
     float: left;
     cursor: pointer;
