@@ -1,18 +1,21 @@
 import {Component, OnInit}   from 'angular2/core';
 import {Card} from "../card/card";
 import {CardService} from "../card/card.service";
+import {CardComponent} from "../card/card.component";
 
 @Component({
     template: `
     <h2>Cards:</h2>
-    <ul>
-      <!--<li *ngFor="#hero of heroes"-->
-        <!--[class.selected]="isSelected(hero)"-->
-        <!--(click)="onSelect(hero)">-->
-        <!--<span class="badge">{{hero.id}}</span> {{hero.name}}-->
-      <!--</li>-->
-    </ul>
-  `
+    <div class="cm-card-list">
+      <div *ngFor="#card of cards"
+        [class.selected]="isSelected(card)"
+        (click)="onSelect(card)">
+        <cm-card [card]="card"></cm-card>
+      </div>
+    </div>
+  `,
+    providers: [CardService],
+    directives: [CardComponent]
 })
 export class CardListComponent implements OnInit {
     cards:Card[];

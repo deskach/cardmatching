@@ -1,7 +1,7 @@
 {
   "port": 9001,
   "codeSync": true,
-  "reloadDebounce": 1000,
+  "reloadDebounce": 60000,
   "online": false,
   "injectChanges": true,
   "browser": "google chrome",

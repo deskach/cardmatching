@@ -14,12 +14,15 @@ export class CardService {
 }
 
 var CARDS = [
-    new Card(11),
-    new Card(12),
-    new Card(13),
-    new Card(14),
-    new Card(15),
-    new Card(16)
+    new Card(1),
+    new Card(2),
+    new Card(3),
+    new Card(4),
+    new Card(5),
+    new Card(6),
+    new Card(7),
+    new Card(8),
+    new Card(9)
 ];
 
 var cardsPromise = Promise.resolve(CARDS);
