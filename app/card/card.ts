@@ -3,4 +3,8 @@ export class Card {
 
     constructor(public id:number) {
     }
+
+    clone() {
+        return new Card(this.id);
+    }
 }

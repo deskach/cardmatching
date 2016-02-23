@@ -2,6 +2,7 @@ import {Component, OnInit}   from 'angular2/core';
 import {Card} from "../card/card";
 import {CardService} from "../card/card.service";
 import {CardComponent} from "../card/card.component";
+import {shuffle} from "../util";
 
 @Component({
     template: `
@@ -19,12 +20,22 @@ import {CardComponent} from "../card/card.component";
 export class CardListComponent implements OnInit {
     cards:Card[];
 
-    constructor(private _service:CardService) {
+    constructor(
+        private _service:CardService
+    ) {
     }
 
     ngOnInit() {
         this._service.getCards()
-            .then(result => this.cards = result)
+            .then((result) => {
+                let cards = [].concat(result);
+
+                for(let i in result) {
+                    cards.push(result[i].clone());
+                }
+
+                this.cards = shuffle(cards);
+            })
     }
 
     onSelect(card:Card) {
