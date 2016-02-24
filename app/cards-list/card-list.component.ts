@@ -3,6 +3,7 @@ import {Card} from "../card/card";
 import {CardService} from "../card/card.service";
 import {CardComponent} from "../card/card.component";
 import {shuffle} from "../util";
+import {IGame} from "../game/igame";
 
 @Component({
     template: `
@@ -21,7 +22,8 @@ export class CardListComponent implements OnInit {
     cards:Card[];
 
     constructor(
-        private _service:CardService
+        private _service:CardService,
+        private _game: IGame
     ) {
     }
 
@@ -39,6 +41,6 @@ export class CardListComponent implements OnInit {
     }
 
     onSelect(card:Card) {
-        card.isFolded = !card.isFolded;
+        this._game.select(card);
     }
 }
