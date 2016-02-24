@@ -4,6 +4,7 @@ import {CardListComponent} from "./cards-list/card-list.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {FindPairGame} from "./game/find-pair/find-pair.game";
 import {IGame} from "./game/igame";
+import {CardService} from "./card/card.service";
 
 @Component({
     selector: 'my-app',
@@ -16,7 +17,7 @@ import {IGame} from "./game/igame";
     <router-outlet></router-outlet>
   `,
     directives: [ROUTER_DIRECTIVES],
-    providers: [provide(IGame, {useClass: FindPairGame})]
+    providers: [provide(IGame, {useClass: FindPairGame}), CardService]
 })
 @RouteConfig([
     {path: '/cards', name: 'Cards', component: CardListComponent, useAsDefault: true},
