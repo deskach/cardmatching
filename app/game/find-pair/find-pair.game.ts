@@ -8,6 +8,7 @@ import {ICardService} from "../../card/icard.service";
 @Injectable()
 export class FindPairGame implements IGame {
     cards:Card[] = [];
+    selectedCard:Card = null;
 
     constructor(private _service:ICardService) {
     }
@@ -29,6 +30,19 @@ export class FindPairGame implements IGame {
     }
 
     select(card:Card) {
-        card.isFolded = !card.isFolded;
+        if(card.isFolded) {
+            card.isFolded = false;
+
+            if(this.selectedCard) {
+                if(this.selectedCard.id !== card.id) {
+                    this.selectedCard.isFolded = true;
+                    card.isFolded = true;
+                }
+
+                this.selectedCard = null;
+            } else {
+                this.selectedCard = card;
+            }
+        }
     }
 }
