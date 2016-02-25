@@ -1,15 +1,15 @@
 import {Card} from "../../card/card";
 import {Injectable} from "angular2/core";
 import {IGame} from "../igame";
-import {CardService} from "../../card/card.service";
 import {shuffle} from "../../util";
+import {ICardService} from "../../card/icard.service";
 
 //TODO: implement me
 @Injectable()
 export class FindPairGame implements IGame {
     cards:Card[] = [];
 
-    constructor(private _service:CardService) {
+    constructor(private _service:ICardService) {
     }
 
     init() {
