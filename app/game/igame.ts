@@ -3,11 +3,10 @@ import {Card} from "../card/card";
 export class IGame {
     cards:Card[];
 
-    init() {
-        return new Promise(()=> {
-        });
+    init():Promise<Card[]> {
+        throw "Implement the interface";
     }
 
-    select(card:Card) {
+    select(card:Card):void {
     }
 }
