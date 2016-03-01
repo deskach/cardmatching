@@ -22,7 +22,7 @@ import {TextCardService} from "./card/text/text.card.service";
         provide(IGame, {
             useFactory: () => {
                 //TODO: Check when 'deps' option starts working and make use of it
-                return FindPairGame.create(new TextCardService(), new TextCardService())
+                return FindPairGame.create(new TextCardService(), new TextCardService());
             }
         })
     ]

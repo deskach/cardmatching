@@ -2,6 +2,7 @@ import {Component, OnInit}   from 'angular2/core';
 import {ICard} from "../card/icard";
 import {CardComponent} from "../card/card.component";
 import {IGame} from "../game/igame";
+import {Title} from "angular2/src/platform/browser/title";
 
 @Component({
     template: `
@@ -24,6 +25,9 @@ export class CardListComponent implements OnInit {
     ngOnInit() {
         this._game.init().then(() => {
             this.cards = this._game.cards;
+
+            let title = new Title();
+            title.setTitle(this._game.title);
         });
     }
 

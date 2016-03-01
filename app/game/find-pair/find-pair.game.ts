@@ -7,7 +7,9 @@ import {ICardService} from "../../card/icard.service";
 @Injectable()
 export class FindPairGame implements IGame {
     cards:ICard[] = [];
-    selectedCard:ICard = null;
+    title:string = "Find a pair";
+
+    private selectedCard:ICard = null;
 
     constructor(private _service1:ICardService,
                 private _service2:ICardService
