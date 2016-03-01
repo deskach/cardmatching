@@ -18,17 +18,30 @@ export class FindPairGame implements IGame {
     }
 
     init() {
-        var result = this._service1.getCards();
+        let result = Promise.all([this._service1.getCards(), this._service2.getCards()]);
 
-        result.then((cardArray) => {
-                let cards = [].concat(cardArray);
+        result.then((values) => {
+            if(values.length === 2) {
+                let cards1 = values[0];
+                let cards2 = values[1];
+                let cards = [];
 
-                for (let i in cardArray) {
-                    cards.push(cardArray[i].clone());
-                }
+                cards1.forEach((c1) => {
+                    let search = cards2.filter(c => c.id === c1.id);
+
+                    if (search.length > 0) {
+                        cards.push(c1);
+                        cards.push(search[0]);
+                    } else {
+                        console.log("Failed to find a sibling for Card with id " + c1.id);
+                    }
+                });
 
                 this.cards = shuffle(cards);
-            });
+            } else {
+                console.log("Unexpected behavior");
+            }
+        });
 
         return result;
     }
