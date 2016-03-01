@@ -5,7 +5,7 @@ import {ICard} from "./../icard";
     selector: "crm-text-card",
     styleUrls: ['app/card/card.css'],
     inputs: ['card'],
-    template: `<div class="crm-card">{{card.isFolded ? '#' : card.id}}</div>`
+    template: `<div class="crm-card">{{card.isFolded ? '#' : card.text}}</div>`
 })
 export class TextCardComponent {
     public card: ICard;

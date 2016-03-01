@@ -5,15 +5,15 @@ import {TextCard} from "./text.card";
 @Injectable()
 export class TextCardService implements ICardService {
     private _CARDS = [
-        new TextCard(1),
-        new TextCard(2),
-        new TextCard(3),
-        new TextCard(4),
-        new TextCard(5),
-        new TextCard(6),
-        new TextCard(7),
-        new TextCard(8),
-        new TextCard(9)
+        new TextCard(1, 'A'),
+        new TextCard(2, 'B'),
+        new TextCard(3, 'C'),
+        new TextCard(4, 'D'),
+        new TextCard(5, 'E'),
+        new TextCard(6, 'F'),
+        new TextCard(7, 'G'),
+        new TextCard(8, 'H'),
+        new TextCard(9, 'I')
     ];
 
     getCards() {

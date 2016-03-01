@@ -24,10 +24,10 @@ export class TextCard implements ICard {
     }
 
     constructor(public id:number,
-                public text?:string) {
+                public text:string) {
     }
 
     clone():ICard {
-        return new TextCard(this.id);
+        return new TextCard(this.id, this.id.toString());
     }
 }
