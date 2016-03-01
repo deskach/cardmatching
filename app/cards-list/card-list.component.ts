@@ -15,6 +15,9 @@ import {TextCardComponent} from "../card/text/text.card.component";
             <template ngSwitchWhen="TextCard">
                 <crm-text-card [card]="card" (click)="onSelect(card)"></crm-text-card>
             </template>
+            <!--<template [ngSwitchWhen]="ImgCard">-->
+                <!--<crm-img-card [card]="card" (click)="onSelect(card)"></crm-img-card>-->
+            <!--</template>-->
         </div>
       </div>
     </div>
