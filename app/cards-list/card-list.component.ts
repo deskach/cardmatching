@@ -1,20 +1,21 @@
 import {Component, OnInit}   from 'angular2/core';
 import {ICard} from "../card/icard";
-import {CardComponent} from "../card/card.component";
 import {IGame} from "../game/igame";
 import {Title} from "angular2/src/platform/browser/title";
+import {TextCardComponent} from "../card/text/text.card.component";
 
 @Component({
+    styleUrls: ['app/cards-list/card-list.css'],
     template: `
     <h2>Cards:</h2>
-    <div class="cm-card-list">
+    <div class="crm-card-list">
       <div *ngFor="#card of cards"
         (click)="onSelect(card)">
-        <cm-card [card]="card"></cm-card>
+        <crm-text-card [card]="card"></crm-text-card>
       </div>
     </div>
   `,
-    directives: [CardComponent]
+    directives: [TextCardComponent]
 })
 export class CardListComponent implements OnInit {
     cards:ICard[];

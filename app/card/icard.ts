@@ -3,6 +3,10 @@ import {CRMConstants} from '../static';
 export class ICard {
     public id:number;
 
+    get type(): string {
+        throw new Error(CRMConstants.NOT_IMPLEMENTED);
+    }
+
     get isFolded():boolean {
         throw new Error(CRMConstants.NOT_IMPLEMENTED);
     }

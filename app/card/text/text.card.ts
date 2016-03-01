@@ -1,7 +1,13 @@
 import {ICard} from "../icard";
 
 export class TextCard implements ICard {
+    public static type = "TextCard";
+
     private _isFolded:boolean = true;
+
+    get type(): string {
+        return TextCard.type;
+    }
 
     get isFolded():boolean {
         return this._isFolded;
