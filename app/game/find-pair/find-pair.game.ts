@@ -29,8 +29,8 @@ export class FindPairGame implements IGame {
                     let search = cards2.filter(c => c.id === c1.id);
 
                     if (search.length > 0) {
-                        cards.push(c1);
-                        cards.push(search[0]);
+                        cards.push(c1.clone());
+                        cards.push(search[0].clone());
                     } else {
                         console.log("Failed to find a sibling for Card with id " + c1.id);
                     }

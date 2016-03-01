@@ -19,11 +19,10 @@ import {TextCardService} from "./card/text/text.card.service";
   `,
     directives: [ROUTER_DIRECTIVES],
     providers: [
+        TextCardService,
         provide(IGame, {
-            useFactory: () => {
-                //TODO: Check when 'deps' option starts working and make use of it
-                return FindPairGame.create(new TextCardService(), new TextCardService());
-            }
+            useFactory: FindPairGame.create,
+            deps: [TextCardService, TextCardService]
         })
     ]
 })
