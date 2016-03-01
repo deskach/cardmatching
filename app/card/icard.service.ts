@@ -1,7 +1,8 @@
 import {ICard} from "./icard";
+import {CRMConstants} from '../static';
 
 export class ICardService {
     getCards():Promise<ICard[]> {
-        throw "Implement the interface";
+        throw new Error(CRMConstants.NOT_IMPLEMENTED);
     }
 }

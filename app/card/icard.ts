@@ -1,15 +1,17 @@
+import {CRMConstants} from '../static';
+
 export class ICard {
     public id:number;
 
     get isFolded():boolean {
-        throw "implement me";
+        throw new Error(CRMConstants.NOT_IMPLEMENTED);
     }
 
     set isFolded(aIsFolded:boolean) {
-        throw "Implement me";
+        throw new Error(CRMConstants.NOT_IMPLEMENTED);
     }
 
     clone():ICard {
-        throw "Implement me";
+        throw new Error(CRMConstants.NOT_IMPLEMENTED);
     }
 }
