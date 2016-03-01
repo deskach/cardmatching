@@ -28,6 +28,6 @@ export class TextCard implements ICard {
     }
 
     clone():ICard {
-        return new TextCard(this.id, this.id.toString());
+        return new TextCard(this.id, this.text);
     }
 }
