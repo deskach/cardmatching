@@ -1,4 +1,5 @@
 import {Component, OnInit}   from 'angular2/core';
+import {NgSwitch, NgSwitchWhen} from "angular2/common";
 import {ICard} from "../card/icard";
 import {IGame} from "../game/igame";
 import {Title} from "angular2/src/platform/browser/title";
@@ -9,13 +10,16 @@ import {TextCardComponent} from "../card/text/text.card.component";
     template: `
     <h2>Cards:</h2>
     <div class="crm-card-list">
-      <div *ngFor="#card of cards"
-        (click)="onSelect(card)">
-        <crm-text-card [card]="card"></crm-text-card>
+      <div *ngFor="#card of cards">
+        <div [ngSwitch]="card.type">
+            <template ngSwitchWhen="TextCard">
+                <crm-text-card [card]="card" (click)="onSelect(card)"></crm-text-card>
+            </template>
+        </div>
       </div>
     </div>
   `,
-    directives: [TextCardComponent]
+    directives: [TextCardComponent, NgSwitch, NgSwitchWhen]
 })
 export class CardListComponent implements OnInit {
     cards:ICard[];
