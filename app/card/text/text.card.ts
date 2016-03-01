@@ -1,4 +1,6 @@
-export class Card {
+import {ICard} from "../icard";
+
+export class TextCard implements ICard {
     private _isFolded:boolean = true;
 
     get isFolded():boolean {
@@ -6,7 +8,7 @@ export class Card {
     }
 
     set isFolded(aIsFolded:boolean) {
-        if(aIsFolded) { // delay card folding, to give some time to a user to see its face
+        if (aIsFolded) { // delay card folding, to give some time to a user to see its face
             setTimeout(() => {
                 this._isFolded = true;
             }, 1000);
@@ -15,10 +17,11 @@ export class Card {
         }
     }
 
-    constructor(public id:number) {
+    constructor(public id:number,
+                public text?:string) {
     }
 
-    clone():Card {
-        return new Card(this.id);
+    clone():ICard {
+        return new TextCard(this.id);
     }
 }

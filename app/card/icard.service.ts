@@ -1,7 +1,7 @@
-import {Card} from "./card";
+import {ICard} from "./icard";
 
 export class ICardService {
-    getCards():Promise<Card[]> {
+    getCards():Promise<ICard[]> {
         throw "Implement the interface";
     }
 }

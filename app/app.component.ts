@@ -5,7 +5,7 @@ import {SettingsComponent} from "./settings/settings.component";
 import {FindPairGame} from "./game/find-pair/find-pair.game";
 import {IGame} from "./game/igame";
 import {ICardService} from "./card/icard.service";
-import {NumberCardService} from "./card/number/number.card.service";
+import {TextCardService} from "./card/text/text.card.service";
 
 @Component({
     selector: 'my-app',
@@ -20,7 +20,7 @@ import {NumberCardService} from "./card/number/number.card.service";
     directives: [ROUTER_DIRECTIVES],
     providers: [
         provide(IGame, {useClass: FindPairGame}),
-        provide(ICardService, {useClass: NumberCardService})
+        provide(ICardService, {useClass: TextCardService})
     ]
 })
 @RouteConfig([

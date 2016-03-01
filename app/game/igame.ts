@@ -1,12 +1,13 @@
-import {Card} from "../card/card";
+///<reference path="../card/icard.ts"/>
+import {ICard} from "../card/icard";
 
 export class IGame {
-    cards:Card[];
+    cards:ICard[];
 
-    init():Promise<Card[]> {
+    init():Promise<ICard[]> {
         throw "Implement the interface";
     }
 
-    select(card:Card):void {
+    select(card:ICard):void {
     }
 }

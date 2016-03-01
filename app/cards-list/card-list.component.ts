@@ -1,5 +1,5 @@
 import {Component, OnInit}   from 'angular2/core';
-import {Card} from "../card/card";
+import {ICard} from "../card/icard";
 import {CardComponent} from "../card/card.component";
 import {IGame} from "../game/igame";
 
@@ -16,7 +16,7 @@ import {IGame} from "../game/igame";
     directives: [CardComponent]
 })
 export class CardListComponent implements OnInit {
-    cards:Card[];
+    cards:ICard[];
 
     constructor(private _game:IGame) {
     }
@@ -27,7 +27,7 @@ export class CardListComponent implements OnInit {
         });
     }
 
-    onSelect(card:Card) {
+    onSelect(card:ICard) {
         this._game.select(card);
     }
 }

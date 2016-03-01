@@ -1,4 +1,4 @@
-import {Card} from "../../card/card";
+import {ICard} from "../../card/icard";
 import {Injectable} from "angular2/core";
 import {IGame} from "../igame";
 import {shuffle} from "../../util";
@@ -7,8 +7,8 @@ import {ICardService} from "../../card/icard.service";
 //TODO: implement me
 @Injectable()
 export class FindPairGame implements IGame {
-    cards:Card[] = [];
-    selectedCard:Card = null;
+    cards:ICard[] = [];
+    selectedCard:ICard = null;
 
     constructor(private _service:ICardService) {
     }
@@ -29,7 +29,7 @@ export class FindPairGame implements IGame {
         return result;
     }
 
-    select(card:Card) {
+    select(card:ICard) {
         if(card.isFolded) {
             card.isFolded = false;
 

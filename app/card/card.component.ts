@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Card} from "./card";
+import {ICard} from "./icard";
 
 @Component({
     selector: "cm-card",
@@ -8,5 +8,5 @@ import {Card} from "./card";
     template: `<div class="cm-card">{{card.isFolded ? '#' : card.id}}</div>`
 })
 export class CardComponent {
-    public card: Card;
+    public card: ICard;
 }
