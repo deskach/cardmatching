@@ -21,6 +21,7 @@ import {TextCardService} from "./card/text/text.card.service";
     providers: [
         provide(IGame, {
             useFactory: () => {
+                //TODO: Check when 'deps' option starts working and make use of it
                 return FindPairGame.create(new TextCardService(), new TextCardService())
             }
         })
