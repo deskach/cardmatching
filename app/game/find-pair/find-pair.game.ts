@@ -9,9 +9,6 @@ export class FindPairGame implements IGame {
     cards:ICard[] = [];
     selectedCard:ICard = null;
 
-    //TODO: change constructor to receive two services.
-    //The services should implement textCard and imgCard;
-
     constructor(private _service1:ICardService,
                 private _service2:ICardService
     ) {
