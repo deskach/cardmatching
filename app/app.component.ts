@@ -19,8 +19,11 @@ import {TextCardService} from "./card/text/text.card.service";
   `,
     directives: [ROUTER_DIRECTIVES],
     providers: [
-        provide(IGame, {useClass: FindPairGame}),
-        provide(ICardService, {useClass: TextCardService})
+        provide(IGame, {
+            useFactory: () => {
+                return FindPairGame.create(new TextCardService(), new TextCardService())
+            }
+        })
     ]
 })
 @RouteConfig([
