@@ -1,4 +1,3 @@
-///<reference path="../card/icard.ts"/>
 import {ICard} from "../card/icard";
 
 export class IGame {
