@@ -9,7 +9,7 @@ import {TextCardComponent} from "../card/text/text.card.component";
     styleUrls: ['app/cards-list/card-list.css'],
     template: `
     <h2>Cards:</h2>
-    <div class="crm-card-list">
+    <div class="crm-card-list container">
       <div *ngFor="#card of cards">
         <div [ngSwitch]="card.type">
             <template ngSwitchWhen="TextCard">
