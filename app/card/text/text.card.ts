@@ -1,33 +1,18 @@
-import {ICard} from "../icard";
+import {CardBase} from "../card-base";
 
-export class TextCard implements ICard {
+export class TextCard extends CardBase {
     public static type = "TextCard";
 
-    private _isFolded:boolean = true;
-
-    get type(): string {
+    get type() {
         return TextCard.type;
-    }
-
-    get isFolded():boolean {
-        return this._isFolded;
-    }
-
-    set isFolded(aIsFolded:boolean) {
-        if (aIsFolded) { // delay card folding, to give some time to a user to see its face
-            setTimeout(() => {
-                this._isFolded = true;
-            }, 1000);
-        } else {
-            this._isFolded = false;
-        }
     }
 
     constructor(public id:number,
                 public text:string) {
+        super(id);
     }
 
-    clone():ICard {
+    clone() {
         return new TextCard(this.id, this.text);
     }
 }
