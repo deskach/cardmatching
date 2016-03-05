@@ -31,12 +31,16 @@ export class CardListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._game.init().then(() => {
-            this.cards = this._game.cards;
+        if(this._game.cards.length === 0) {
+            this._game.init().then(() => {
+                this.cards = this._game.cards;
 
-            let title = new Title();
-            title.setTitle(this._game.title);
-        });
+                let title = new Title();
+                title.setTitle(this._game.title);
+            });
+        } else {
+            this.cards = this._game.cards;
+        }
     }
 
     onSelect(card:ICard) {
