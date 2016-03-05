@@ -6,6 +6,7 @@ import {FindPairGame} from "./game/find-pair/find-pair.game";
 import {IGame} from "./game/igame";
 import {ICardService} from "./card/icard.service";
 import {TextCardService} from "./card/text/text.card.service";
+import {ImgCardService} from "./card/img/img.card.service";
 
 @Component({
     selector: 'my-app',
@@ -20,9 +21,10 @@ import {TextCardService} from "./card/text/text.card.service";
     directives: [ROUTER_DIRECTIVES],
     providers: [
         TextCardService,
+        ImgCardService,
         provide(IGame, {
             useFactory: FindPairGame.create,
-            deps: [TextCardService, TextCardService]
+            deps: [ImgCardService, ImgCardService]
         })
     ]
 })

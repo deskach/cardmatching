@@ -4,6 +4,7 @@ import {ICard} from "../card/icard";
 import {IGame} from "../game/igame";
 import {Title} from "angular2/src/platform/browser/title";
 import {TextCardComponent} from "../card/text/text.card.component";
+import {ImgCardComponent} from "../card/img/img.card.component";
 
 @Component({
     styleUrls: ['app/cards-list/card-list.css'],
@@ -15,14 +16,14 @@ import {TextCardComponent} from "../card/text/text.card.component";
             <template ngSwitchWhen="TextCard">
                 <crm-text-card [card]="card" (click)="onSelect(card)"></crm-text-card>
             </template>
-            <!--<template [ngSwitchWhen]="ImgCard">-->
-                <!--<crm-img-card [card]="card" (click)="onSelect(card)"></crm-img-card>-->
-            <!--</template>-->
+            <template ngSwitchWhen="ImgCard">
+                <crm-img-card [card]="card" (click)="onSelect(card)"></crm-img-card>
+            </template>
         </div>
       </div>
     </div>
   `,
-    directives: [TextCardComponent, NgSwitch, NgSwitchWhen]
+    directives: [ImgCardComponent, TextCardComponent, NgSwitch, NgSwitchWhen]
 })
 export class CardListComponent implements OnInit {
     cards:ICard[];
