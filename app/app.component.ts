@@ -24,7 +24,7 @@ import {ImgCardService} from "./card/img/img.card.service";
         ImgCardService,
         provide(IGame, {
             useFactory: FindPairGame.create,
-            deps: [ImgCardService, ImgCardService]
+            deps: [ImgCardService, TextCardService]
         })
     ]
 })

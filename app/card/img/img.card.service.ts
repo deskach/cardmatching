@@ -16,9 +16,9 @@ export class ImgCardService extends CardServiceBase {
             new ImgCard(6, 'app/media/images/flower.jpg'),
             new ImgCard(7, 'app/media/images/goose.jpg'),
             new ImgCard(8, 'app/media/images/home.jpg'),
-            new ImgCard(9, 'app/media/images/icecream.jpg'),
-            new ImgCard(10, 'app/media/images/jerry.png'),
-            new ImgCard(11, 'app/media/images/kite.jpg')
+            new ImgCard(9, 'app/media/images/icecream.jpg')
+            //new ImgCard(10, 'app/media/images/jerry.png'),
+            //new ImgCard(11, 'app/media/images/kite.jpg')
         ];
     }
 }
