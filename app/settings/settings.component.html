@@ -1,0 +1,10 @@
+<h2>Settings</h2>
+<div class="container">
+    <form (ngSubmit)="onSubmit">
+        <div class="form-group">
+            <select class="form-control" required [(ngModel)]="model.gameType" >
+                <option *ngFor="#t of gameTypes" [value]="t">{{t}}</option>
+            </select>
+        </div>
+    </form>
+</div>

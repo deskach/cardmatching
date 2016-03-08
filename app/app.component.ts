@@ -7,6 +7,7 @@ import {IGame} from "./game/igame";
 import {ICardService} from "./card/icard.service";
 import {TextCardService} from "./card/text/text.card.service";
 import {ImgCardService} from "./card/img/img.card.service";
+import {GameSettings} from "./settings/settings";
 
 @Component({
     selector: 'my-app',
@@ -25,7 +26,8 @@ import {ImgCardService} from "./card/img/img.card.service";
         provide(IGame, {
             useFactory: FindPairGame.create,
             deps: [ImgCardService, TextCardService]
-        })
+        }),
+        provide(GameSettings, {useValue: AppComponent.settings})
     ]
 })
 @RouteConfig([
@@ -33,4 +35,5 @@ import {ImgCardService} from "./card/img/img.card.service";
     {path: '/settings', name: 'Settings', component: SettingsComponent}
 ])
 export class AppComponent {
+    static settings = new GameSettings();
 }

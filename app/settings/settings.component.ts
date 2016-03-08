@@ -1,9 +1,12 @@
 import {Component}   from 'angular2/core';
+import {GameSettings} from "./settings";
 
 @Component({
-    template: `
-    <h2>Settings</h2>
-  `
+    templateUrl: 'app/settings/settings.component.html'
 })
 export class SettingsComponent {
+    gameTypes:string[] = GameSettings.gameTypes;
+
+    constructor(public model:GameSettings) {
+    }
 }
