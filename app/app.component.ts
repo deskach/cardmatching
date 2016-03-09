@@ -21,13 +21,13 @@ import {GameSettings} from "./settings/settings";
   `,
     directives: [ROUTER_DIRECTIVES],
     providers: [
+        GameSettings,
         TextCardService,
         ImgCardService,
         provide(IGame, {
             useFactory: FindPairGame.create,
             deps: [ImgCardService, TextCardService]
         }),
-        provide(GameSettings, {useValue: AppComponent.settings})
     ]
 })
 @RouteConfig([
@@ -35,5 +35,4 @@ import {GameSettings} from "./settings/settings";
     {path: '/settings', name: 'Settings', component: SettingsComponent}
 ])
 export class AppComponent {
-    static settings = new GameSettings();
 }
