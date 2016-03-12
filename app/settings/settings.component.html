@@ -1,6 +1,6 @@
 <h2>Settings</h2>
 <div class="container">
-    <form (ngSubmit)="onSubmit">
+    <form (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="form-group">
                 <div class="col-lg-3 col-sm-5">
@@ -18,7 +18,7 @@
         </div>
         <div class="center-block row">
             <input type="submit" value="Apply" class="btn btn-primary">
-            <input type="button" value="Cancel" class="btn btn-default">
+            <input type="button" value="Cancel" class="btn btn-default" (click)="go2game()">
         </div>
     </form>
 </div>

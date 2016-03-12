@@ -1,5 +1,6 @@
 import {Component}   from 'angular2/core';
 import {GameSettings} from "./settings";
+import {Router} from "angular2/router";
 
 @Component({
     styleUrls: ['app/settings/settings.css'],
@@ -8,6 +9,16 @@ import {GameSettings} from "./settings";
 export class SettingsComponent {
     gameTypes:string[] = GameSettings.gameTypes;
 
-    constructor(public model:GameSettings) {
+    constructor(public model:GameSettings,
+                private _router:Router) {
+    }
+
+    onSubmit() {
+        this.model.updated = true;
+        this.go2game();
+    }
+
+    go2game() {
+        this._router.navigate(['Cards']);
     }
 }
