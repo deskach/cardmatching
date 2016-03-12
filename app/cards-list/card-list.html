@@ -1,0 +1,13 @@
+<h2>Cards:</h2>
+<div class="crm-card-list container">
+    <div *ngFor="#card of cards">
+        <div [ngSwitch]="card.type">
+            <template ngSwitchWhen="TextCard">
+                <crm-text-card [card]="card" (click)="onSelect(card)"></crm-text-card>
+            </template>
+            <template ngSwitchWhen="ImgCard">
+                <crm-img-card [card]="card" (click)="onSelect(card)"></crm-img-card>
+            </template>
+        </div>
+    </div>
+</div>

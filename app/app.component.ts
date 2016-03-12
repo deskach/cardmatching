@@ -21,12 +21,12 @@ import {GameSettings} from "./settings/settings";
   `,
     directives: [ROUTER_DIRECTIVES],
     providers: [
-        GameSettings,
         TextCardService,
         ImgCardService,
+        provide(GameSettings, {useValue: AppComponent.sts}),
         provide(IGame, {
-            useFactory: FindPairGame.create,
-            deps: [ImgCardService, TextCardService]
+            useFactory: AppComponent.getGameFactory(),
+            deps: AppComponent.getGameServices()
         }),
     ]
 })
@@ -35,4 +35,17 @@ import {GameSettings} from "./settings/settings";
     {path: '/settings', name: 'Settings', component: SettingsComponent}
 ])
 export class AppComponent {
+    public static sts = new GameSettings();
+
+    public static getGameFactory() {
+        return FindPairGame.create;
+    }
+
+    public static getGameServices() {
+        let name2service = {};
+        name2service[GameSettings.pictures] = ImgCardService;
+        name2service[GameSettings.letters] = TextCardService;
+
+        return [name2service[AppComponent.sts.cardTypes[0]], name2service[AppComponent.sts.cardTypes[1]]];
+    }
 }
