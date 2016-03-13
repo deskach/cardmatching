@@ -14,8 +14,9 @@ export class SettingsComponent {
     }
 
     onSubmit() {
-        this.model.updated = true;
-        this.go2game();
+        this.model.update().then(() => {
+            this.go2game();
+        });
     }
 
     go2game() {

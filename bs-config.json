@@ -1,6 +1,6 @@
 {
   "port": 9001,
-  "codeSync": true,
+  "codeSync": false,
   "reloadDebounce": 60000,
   "online": false,
   "injectChanges": true,

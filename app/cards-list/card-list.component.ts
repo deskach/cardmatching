@@ -6,7 +6,6 @@ import {Title} from "angular2/src/platform/browser/title";
 import {TextCardComponent} from "../card/text/text.card.component";
 import {ImgCardComponent} from "../card/img/img.card.component";
 import {GameSettings} from "../settings/settings";
-import {AppComponent} from "../app.component";
 
 @Component({
     styleUrls: ['app/cards-list/card-list.css'],
@@ -15,28 +14,16 @@ import {AppComponent} from "../app.component";
 })
 export class CardListComponent implements OnInit {
     cards:ICard[];
+    private _game:IGame = null;
 
-    constructor(private _game:IGame, private _sts: GameSettings) {
+    constructor(private _sts: GameSettings) {
     }
 
     ngOnInit() {
-        if(this._sts.updated) {
-            let factory = AppComponent.getGameFactory();
-            let deps = AppComponent.getGameServices();
-
-            this._game = factory(new deps[0](), new deps[1]());
-            this._sts.updated = false;
-        }
-
-        if(this._game.cards.length === 0) {
-            this._game.init().then(() => {
-                this.cards = this._game.cards;
-            });
-        } else {
-            this.cards = this._game.cards;
-        }
-
+        this._game = this._sts.game;
+        this.cards = this._game.cards;
         let title = new Title();
+
         title.setTitle(this._game.title);
     }
 
