@@ -4,6 +4,8 @@ import {FindPairGame} from "../game/find-pair/find-pair.game";
 import {IGame} from "../game/igame";
 import {Injectable} from "angular2/core";
 
+//TODO: Implement number-of-cards setting
+
 @Injectable()
 export class GameSettings {
     static pictures = 'Pictures';
