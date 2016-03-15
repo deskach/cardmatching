@@ -1,14 +1,11 @@
 import {ICard} from "../card/icard";
 import {CRMConstants} from '../static';
 
-export class IGame {
+export interface IGame {
     cards:ICard[];
     title:string;
 
-    init():Promise<any> {
-        throw new Error(CRMConstants.NOT_IMPLEMENTED);
-    }
+    init():Promise<any>;
 
-    select(card:ICard):void {
-    }
+    select(card:ICard):void;
 }

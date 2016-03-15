@@ -2,10 +2,12 @@ import {CRMConstants} from '../static';
 import {ICard} from "./icard";
 
 export class CardBase implements ICard {
+    public static type = "BaseCard";
+
     private _isFolded:boolean = true;
 
     get type():string {
-        throw new Error(CRMConstants.OVERRIDE_ME);
+        return CardBase.type;
     }
 
     get isFolded():boolean {
