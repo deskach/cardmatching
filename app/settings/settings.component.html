@@ -1,24 +1,21 @@
-<h2>Settings</h2>
-<div class="container">
-    <form (ngSubmit)="onSubmit()">
-        <div class="row">
-            <div class="form-group">
-                <div class="col-lg-3 col-sm-5">
-                    <select name="card-type0" class="form-control" required [(ngModel)]="model.cardTypes[0]">
-                        <option *ngFor="#t of gameTypes" [value]="t">{{t}}</option>
-                    </select>
-                </div>
-                <label class="col-lg-1 col-sm-1">vs</label>
-                <div class="col-lg-3 col-sm-5">
-                    <select name="card-type1" class="form-control" required [(ngModel)]="model.cardTypes[1]">
-                        <option *ngFor="#t of gameTypes" [value]="t">{{t}}</option>
-                    </select>
-                </div>
+<form (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-3 col-sm-5">
+                <select name="card-type0" class="form-control" required [(ngModel)]="model.cardTypes[0]">
+                    <option *ngFor="#t of gameTypes" [value]="t">{{t}}</option>
+                </select>
+            </div>
+            <label class="col-lg-1 col-sm-1">vs</label>
+            <div class="col-lg-3 col-sm-5">
+                <select name="card-type1" class="form-control" required [(ngModel)]="model.cardTypes[1]">
+                    <option *ngFor="#t of gameTypes" [value]="t">{{t}}</option>
+                </select>
             </div>
         </div>
-        <div class="center-block row">
-            <input type="submit" value="Apply" class="btn btn-primary">
-            <input type="button" value="Cancel" class="btn btn-default" (click)="go2game()">
-        </div>
-    </form>
-</div>
+    </div>
+    <div class="center-block row">
+        <input type="submit" value="Apply" class="btn btn-primary">
+        <input type="button" value="Cancel" class="btn btn-default" (click)="go2game()">
+    </div>
+</form>

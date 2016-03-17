@@ -21,7 +21,7 @@ export class GameSettings {
         this._name2service[GameSettings.pictures] = new ImgCardService();
         this._name2service[GameSettings.letters] = new TextCardService();
 
-        Promise.all([this.update()]).then(null);
+        this.update(); //TODO: It's not good to have initialization here
     }
 
     public update() {
