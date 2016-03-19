@@ -4,28 +4,13 @@ import {CardListComponent} from "./cards-list/card-list.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {GameSettings} from "./settings/settings";
 import {Router} from "angular2/router";
+import {Title} from "angular2/src/platform/browser/title";
 
 @Component({
     selector: 'my-app',
-    template: `
-    <div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li [class.active]="activeTab == 'cards'">
-                    <a [routerLink]="['Cards']" class="navbar-link">Play</a>
-                </li>
-                <li [class.active]="activeTab == 'settings'">
-                    <a [routerLink]="['Settings']" class="navbar-link">Configure</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-        <router-outlet></router-outlet>
-    </div>
-  `,
+    templateUrl: 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [GameSettings]
+    providers: [GameSettings, Title]
 })
 @RouteConfig([
     {path: '/cards', name: 'Cards', component: CardListComponent, useAsDefault: true},

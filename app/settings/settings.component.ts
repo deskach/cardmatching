@@ -1,6 +1,7 @@
 import {Component}   from 'angular2/core';
 import {GameSettings} from "./settings";
 import {Router} from "angular2/router";
+import {Title} from "angular2/src/platform/browser/title";
 
 @Component({
     styleUrls: ['app/settings/settings.css'],
@@ -10,7 +11,10 @@ export class SettingsComponent {
     gameTypes:string[] = GameSettings.gameTypes;
 
     constructor(public model:GameSettings,
-                private _router:Router) {
+                private _router:Router,
+                title: Title
+    ) {
+        title.setTitle('Game settings');
     }
 
     onSubmit() {

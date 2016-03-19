@@ -16,15 +16,13 @@ export class CardListComponent implements OnInit {
     cards:ICard[];
     private _game:IGame = null;
 
-    constructor(private _sts: GameSettings) {
+    constructor(private _sts:GameSettings, private _title:Title) {
     }
 
     ngOnInit() {
         this._game = this._sts.game;
         this.cards = this._game.cards;
-        let title = new Title();
-
-        title.setTitle(this._game.title);
+        this._title.setTitle(this._game.title);
     }
 
     onSelect(card:ICard) {
