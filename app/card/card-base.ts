@@ -4,6 +4,8 @@ import {ICard} from "./icard";
 export class CardBase implements ICard {
     public static type = "BaseCard";
 
+    public isPlayable:boolean = true;
+
     private _isFolded:boolean = true;
 
     get type():string {

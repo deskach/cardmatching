@@ -14,15 +14,14 @@ export class FindPairGame implements IGame {
 
     constructor(private _service1:ICardService,
                 private _service2:ICardService,
-                private _isNight:boolean
-    ) {
+                private _isNight:boolean) {
     }
 
     init() {
         let result = Promise.all([this._service1.getCards(), this._service2.getCards()]);
 
         result.then((values) => {
-            if(values.length === 2) {
+            if (values.length === 2) {
                 let cards1 = values[0];
                 let cards2 = values[1];
                 let cards = [];
@@ -54,13 +53,18 @@ export class FindPairGame implements IGame {
     }
 
     select(card:ICard) {
-        if(card.isFolded) {
-            card.isFolded = false;
+        if (card.isPlayable) {
+            card.isPlayable = false;
+            if(this._isNight) {
+                card.isFolded = false;
+            }
 
-            if(this.selectedCard) {
-                if(this.selectedCard.id !== card.id) {
-                    this.selectedCard.isFolded = true;
-                    card.isFolded = true;
+            if (this.selectedCard) {
+                if (this.selectedCard.id !== card.id) {
+                    card.isPlayable = this.selectedCard.isPlayable = true;
+                    if (this._isNight) {
+                        this.selectedCard.isFolded = card.isFolded = true;
+                    }
                 }
 
                 this.selectedCard = null;
@@ -70,7 +74,7 @@ export class FindPairGame implements IGame {
         }
     }
 
-    static create(s1: ICardService, s2: ICardService, isNight: boolean) {
+    static create(s1:ICardService, s2:ICardService, isNight:boolean) {
         return new FindPairGame(s1, s2, isNight);
     }
 }

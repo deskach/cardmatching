@@ -10,10 +10,12 @@ import {ImgCard} from "./img.card";
         <div class="crm-card thumbnail"></div>
     </div>
     <div *ngIf="!card.isFolded" >
-        <img class="crm-card thumbnail" src="{{card.url}}" />
+        <img class="crm-card thumbnail" [class.crm-card-not-playable]="!card.isPlayable" src="{{card.url}}" />
     </div>
     `
 })
 export class ImgCardComponent {
     public card:ImgCard;
 }
+
+//class="crm-card thumbnail"

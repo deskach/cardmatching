@@ -9,3 +9,7 @@
     cursor: pointer;
     /*position: relative;*/
 }
+
+.crm-card-not-playable {
+    background-color: darkblue;
+}
