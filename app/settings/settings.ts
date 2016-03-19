@@ -5,6 +5,7 @@ import {IGame} from "../game/igame";
 import {Injectable} from "angular2/core";
 
 //TODO: Implement number-of-cards setting
+//TODO: Implement 'old values' by introducing currValues and model GameSettings vars in the SettingsComponent
 
 @Injectable()
 export class GameSettings {
@@ -13,6 +14,7 @@ export class GameSettings {
     static gameTypes = [GameSettings.pictures, GameSettings.letters];
 
     public cardTypes = [GameSettings.gameTypes[0], GameSettings.gameTypes[0]];
+    public isNight = false;
     public game:IGame = null;
 
     private _name2service = {};
@@ -21,11 +23,15 @@ export class GameSettings {
         this._name2service[GameSettings.pictures] = new ImgCardService();
         this._name2service[GameSettings.letters] = new TextCardService();
 
-        this.update(); //TODO: It's not good to have initialization here
+        this.update(); //TODO: Move update into GameFactory.getInstance() and inject it wherever game is needed
     }
 
     public update() {
-        this.game = FindPairGame.create(this._name2service[this.cardTypes[0]], this._name2service[this.cardTypes[1]]);
+        this.game = FindPairGame.create(
+            this._name2service[this.cardTypes[0]],
+            this._name2service[this.cardTypes[1]],
+            this.isNight
+        );
 
         return this.game.init();
     }

@@ -3,6 +3,7 @@ import {Injectable} from "angular2/core";
 import {IGame} from "../igame";
 import {shuffle} from "../../util";
 import {ICardService} from "../../card/icard.service";
+import {GameSettings} from "../../settings/settings";
 
 @Injectable()
 export class FindPairGame implements IGame {
@@ -12,7 +13,8 @@ export class FindPairGame implements IGame {
     private selectedCard:ICard = null;
 
     constructor(private _service1:ICardService,
-                private _service2:ICardService
+                private _service2:ICardService,
+                private _isNight:boolean
     ) {
     }
 
@@ -29,8 +31,14 @@ export class FindPairGame implements IGame {
                     let search = cards2.filter(c => c.id === c1.id);
 
                     if (search.length > 0) {
-                        cards.push(c1.clone());
-                        cards.push(search[0].clone());
+                        let card1 = c1.clone();
+                        let card2 = search[0].clone();
+
+                        card1.isFolded = this._isNight;
+                        card2.isFolded = this._isNight;
+
+                        cards.push(card1);
+                        cards.push(card2);
                     } else {
                         console.log("Failed to find a sibling for Card with id " + c1.id);
                     }
@@ -62,7 +70,7 @@ export class FindPairGame implements IGame {
         }
     }
 
-    static create(s1: ICardService, s2: ICardService) {
-        return new FindPairGame(s1, s2);
+    static create(s1: ICardService, s2: ICardService, isNight: boolean) {
+        return new FindPairGame(s1, s2, isNight);
     }
 }
