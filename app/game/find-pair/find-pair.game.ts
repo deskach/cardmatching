@@ -18,6 +18,14 @@ export class FindPairGame implements IGame {
     }
 
     init() {
+        if(this.cards.length === 0) {
+            return this.reload();
+        }
+
+        return Promise.resolve();
+    }
+
+    reload() {
         let result = Promise.all([this._service1.getCards(), this._service2.getCards()]);
 
         result.then((values) => {

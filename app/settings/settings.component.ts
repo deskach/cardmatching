@@ -1,7 +1,7 @@
-import {Component}   from 'angular2/core';
-import {GameSettings} from "./settings";
+import {Component, EventEmitter, Output}   from 'angular2/core';
 import {Router} from "angular2/router";
 import {Title} from "angular2/src/platform/browser/title";
+import {GameSettings} from "./settings";
 
 @Component({
     styleUrls: ['app/settings/settings.css'],
@@ -9,18 +9,17 @@ import {Title} from "angular2/src/platform/browser/title";
 })
 export class SettingsComponent {
     gameTypes:string[] = GameSettings.gameTypes;
+    @Output() settingsUpdated: EventEmitter<GameSettings> = new EventEmitter<GameSettings>(false);
 
     constructor(public model:GameSettings,
                 private _router:Router,
-                title: Title
-    ) {
+                title:Title) {
         title.setTitle('Game settings');
     }
 
     onSubmit() {
-        this.model.update().then(() => {
-            this.go2game();
-        });
+        this.settingsUpdated.emit(this.model);
+        this.go2game();
     }
 
     go2game() {

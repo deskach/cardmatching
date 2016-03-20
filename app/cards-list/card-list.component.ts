@@ -5,7 +5,7 @@ import {IGame} from "../game/igame";
 import {Title} from "angular2/src/platform/browser/title";
 import {TextCardComponent} from "../card/text/text.card.component";
 import {ImgCardComponent} from "../card/img/img.card.component";
-import {GameSettings} from "../settings/settings";
+import {GameFactory} from "../game/game-factory";
 
 @Component({
     styleUrls: ['app/cards-list/card-list.css'],
@@ -16,13 +16,15 @@ export class CardListComponent implements OnInit {
     cards:ICard[];
     private _game:IGame = null;
 
-    constructor(private _sts:GameSettings, private _title:Title) {
+    constructor(gameFactory: GameFactory, private _title:Title) {
+        this._game = gameFactory.getInstance();
     }
 
     ngOnInit() {
-        this._game = this._sts.game;
-        this.cards = this._game.cards;
-        this._title.setTitle(this._game.title);
+        this._game.init().then(() => {
+            this.cards = this._game.cards;
+            this._title.setTitle(this._game.title);
+        });
     }
 
     onSelect(card:ICard) {

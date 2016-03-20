@@ -6,6 +6,6 @@ export interface IGame {
     title:string;
 
     init():Promise<any>;
-
+    reload():Promise<any>;
     select(card:ICard):void;
 }
