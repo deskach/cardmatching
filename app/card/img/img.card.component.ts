@@ -7,10 +7,12 @@ import {ImgCard} from "./img.card";
     inputs: ['card'],
     template: `
     <div *ngIf="card.isFolded" >
-        <div class="crm-card thumbnail"></div>
+        <div class="crm-card"></div>
     </div>
     <div *ngIf="!card.isFolded" >
-        <img class="crm-card thumbnail" [class.crm-card-not-playable]="!card.isPlayable" src="{{card.url}}" />
+        <div class="crm-card" [class.crm-card-not-playable]="!card.isPlayable" >
+            <img class="img-responsive" src="{{card.url}}" />
+        </div>
     </div>
     `
 })
