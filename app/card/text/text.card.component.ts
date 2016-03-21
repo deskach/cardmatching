@@ -6,11 +6,8 @@ import {TextCard} from "./text.card";
     styleUrls: ['app/card/card.css', 'app/card/text/text.card.css'],
     inputs: ['card'],
     template: `
-    <div *ngIf="card.isFolded" >
-        <div class="crm-card"></div>
-    </div>
-    <div *ngIf="!card.isFolded" >
-        <div class="crm-card" [class.crm-card-not-playable]="!card.isPlayable" >
+    <div class="crm-card" [class.crm-card-not-playable]="!card.isPlayable" >
+        <div *ngIf="!card.isFolded" >
             <div class="crm-text-card">
                 {{card.text}}
             </div>
