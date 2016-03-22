@@ -3,3 +3,7 @@
     text-align: center;
     height: 1.8em;
 }
+
+.crm-card-not-playable {
+    background-color: lightgreen;
+}
