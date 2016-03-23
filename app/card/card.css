@@ -16,6 +16,16 @@
     border: 0.1em solid #66b8da;
 }
 
+.crm-card-bw {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    border: 0.1em solid #66b8da;
+}
+
+.crm-card-not-playable {
+    border-color: dodgerblue;
+}
+
 .img-responsive {
     height: 100%;
     width: 100%;

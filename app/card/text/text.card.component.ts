@@ -8,10 +8,11 @@ import {TextCard} from "./text.card";
     template: `
     <div class="crm-card"
      [ngClass]="{
-        'crm-card-bw': card.isPlayable && !card.isFolded
+        'crm-card-bw': card.isPlayable,
+        'crm-card-not-playable': !card.isPlayable
     }">
         <div *ngIf="!card.isFolded" >
-            <div [class.crm-card-not-playable]="!card.isPlayable" class="crm-text-card" >
+            <div [class.crm-text-card-not-playable]="!card.isPlayable" class="crm-text-card" >
                 {{card.text}}
             </div>
         </div>

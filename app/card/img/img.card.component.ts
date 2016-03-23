@@ -8,7 +8,8 @@ import {ImgCard} from "./img.card";
     template: `
     <div class="crm-card"
      [ngClass]="{
-        'crm-card-bw': card.isPlayable && !card.isFolded
+        'crm-card-bw': card.isPlayable,
+        'crm-card-not-playable': !card.isPlayable
     }">
         <div *ngIf="!card.isFolded">
             <img class="img-responsive" src="{{card.url}}" />
