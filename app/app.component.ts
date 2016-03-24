@@ -18,10 +18,8 @@ import {GameFactory} from "./game/game-factory";
 ])
 export class AppComponent {
     activeTab = 'cards';
-    isGameOver = false;
 
     @ViewChild(SettingsComponent) private stsComp:SettingsComponent;
-    @ViewChild(CardListComponent) private crdListComp:CardListComponent;
 
     constructor(router:Router, gameFactory:GameFactory) {
         let subs = null; //TODO: refactor this when there is a way to pass arguments into router-outlet
@@ -35,14 +33,7 @@ export class AppComponent {
 
             if (this.stsComp) {
                 subs = this.stsComp.onSettingsUpdated.subscribe(() => gameFactory.updateInstance());
-            } else if (this.crdListComp) {
-                subs = this.crdListComp.onGameOver.subscribe(() => this.isGameOver = true);
             }
         });
-    }
-
-    clickedPlayAgain() {
-        this.crdListComp.reload();
-        this.isGameOver = false;
     }
 }

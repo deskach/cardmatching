@@ -1,13 +1,21 @@
 <!--TODO: Create CardBaseComponent, use it here and move ngSwitchWhen into it. -->
-<div class="crm-card-list container">
-    <div *ngFor="#card of cards">
-        <div [ngSwitch]="card.type">
-            <template ngSwitchWhen="TextCard">
-                <crm-text-card [card]="card" (click)="onSelect(card)"></crm-text-card>
-            </template>
-            <template ngSwitchWhen="ImgCard">
-                <crm-img-card [card]="card" (click)="onSelect(card)"></crm-img-card>
-            </template>
+<div class="row">
+    <div class="crm-card-list">
+        <div *ngFor="#card of cards">
+            <div [ngSwitch]="card.type">
+                <template ngSwitchWhen="TextCard">
+                    <crm-text-card [card]="card" (click)="onSelect(card)"></crm-text-card>
+                </template>
+                <template ngSwitchWhen="ImgCard">
+                    <crm-img-card [card]="card" (click)="onSelect(card)"></crm-img-card>
+                </template>
+            </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="well" [hidden]="!isGameOver" >
+        <h1>Game Over!</h1>
+        <input type="button" class="btn btn-primary" value="Play Again" (click)="newGame()" >
     </div>
 </div>

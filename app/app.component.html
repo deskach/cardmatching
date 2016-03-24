@@ -13,13 +13,5 @@
             </div>
         </nav>
     </div>
-    <div class="row">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="row">
-        <div class="well" [hidden]="!isGameOver" >
-            <h1>Game Over!</h1>
-            <input type="button" class="btn btn-primary" value="Play Again" (click)="clickedPlayAgain()" >
-        </div>
-    </div>
+    <router-outlet></router-outlet>
 </div>

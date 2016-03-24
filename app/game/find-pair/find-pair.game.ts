@@ -34,12 +34,11 @@ export class FindPairGame implements IGame {
 
         result.then((values) => {
             if (values.length === 2) {
-                let cards1 = values[0];
-                let cards2 = values[1];
                 let cards = [];
+                let cards1 = shuffle(values[0]).slice(0, this._numOfPairs);
 
                 cards1.forEach((c1) => {
-                    let search = cards2.filter(c => c.id === c1.id);
+                    let search = values[1].filter(c => c.id === c1.id);
 
                     if (search.length > 0) {
                         let card1 = c1.clone();
@@ -55,7 +54,6 @@ export class FindPairGame implements IGame {
                     }
                 });
 
-                cards = cards.slice(0, this._numOfPairs * 2);
                 this.cards = shuffle(cards);
             } else {
                 console.log("Unexpected behavior");

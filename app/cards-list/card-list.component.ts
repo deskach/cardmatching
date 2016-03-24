@@ -13,6 +13,8 @@ import {GameFactory} from "../game/game-factory";
     directives: [ImgCardComponent, TextCardComponent, NgSwitch, NgSwitchWhen]
 })
 export class CardListComponent implements OnInit {
+    private _isGameOver:boolean;
+
     private _game:IGame = null;
     public cards:ICard[];
     @Output() public onGameOver: EventEmitter<void> = new EventEmitter<void>(false);
@@ -21,11 +23,24 @@ export class CardListComponent implements OnInit {
         this._game = this._gameFactory.getInstance();
     }
 
+    get isGameOver() {
+        return this._isGameOver;
+    }
+
+    set isGameOver(isGameOver: boolean) {
+        this._isGameOver = isGameOver;
+
+        if(isGameOver) {
+            this.onGameOver.emit(null);
+        }
+    }
+
     ngOnInit() {
         this._game.init().then(() => {
             this.cards = this._game.cards;
+            this.isGameOver = this._game.cards.filter(c => c.isPlayable).length === 0;
             this._title.setTitle(this._game.title);
-            this._game.onGameOver.subscribe(()=>this.onGameOver.emit(null));
+            this._game.onGameOver.subscribe(() => this.isGameOver = true);
         });
     }
 
@@ -33,7 +48,7 @@ export class CardListComponent implements OnInit {
         this._game.select(card);
     }
 
-    reload() {
+    newGame() {
         this._game = this._gameFactory.createInstance();
         this.ngOnInit();
     }
