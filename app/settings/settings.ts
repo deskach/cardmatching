@@ -11,4 +11,5 @@ export class GameSettings {
 
     public cardTypes = [GameSettings.gameTypes[0], GameSettings.gameTypes[0]];
     public isNight = false;
+    public numberOfPairs = 7;
 }

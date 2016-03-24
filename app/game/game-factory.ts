@@ -27,7 +27,8 @@ export class GameFactory {
         this._game = FindPairGame.create(
             this._name2service[this._sts.cardTypes[0]],
             this._name2service[this._sts.cardTypes[1]],
-            this._sts.isNight
+            this._sts.isNight,
+            this._sts.numberOfPairs
         );
 
         return this._game;

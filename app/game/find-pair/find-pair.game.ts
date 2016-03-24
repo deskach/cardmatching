@@ -17,7 +17,7 @@ export class FindPairGame implements IGame {
 
     constructor(private _service1:ICardService,
                 private _service2:ICardService,
-                private _isNight:boolean,
+                private _isNight:boolean = false,
                 private _numOfPairs:number = 7) {
     }
 
@@ -95,7 +95,7 @@ export class FindPairGame implements IGame {
         }
     }
 
-    static create(s1:ICardService, s2:ICardService, isNight:boolean) {
-        return new FindPairGame(s1, s2, isNight);
+    static create(s1:ICardService, s2:ICardService, isNight:boolean, numberOfPairs:number) {
+        return new FindPairGame(s1, s2, isNight, numberOfPairs);
     }
 }
