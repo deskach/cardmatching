@@ -1,15 +1,25 @@
 <div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li [class.active]="activeTab == 'cards'">
-                    <a [routerLink]="['Cards']" class="navbar-link">Play</a>
-                </li>
-                <li [class.active]="activeTab == 'settings'">
-                    <a [routerLink]="['Settings']" class="navbar-link">Configure</a>
-                </li>
-            </ul>
+    <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li [class.active]="activeTab == 'cards'">
+                        <a [routerLink]="['Cards']" class="navbar-link">Play</a>
+                    </li>
+                    <li [class.active]="activeTab == 'settings'">
+                        <a [routerLink]="['Settings']" class="navbar-link">Configure</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="row">
+        <div class="well" [hidden]="!isGameOver" >
+            <h1>Game Over!</h1>
+            <input type="button" class="btn btn-primary" value="Play Again" (click)="clickedPlayAgain()" >
         </div>
-    </nav>
-    <router-outlet></router-outlet>
+    </div>
 </div>

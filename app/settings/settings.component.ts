@@ -9,7 +9,7 @@ import {GameSettings} from "./settings";
 })
 export class SettingsComponent {
     gameTypes:string[] = GameSettings.gameTypes;
-    @Output() settingsUpdated: EventEmitter<GameSettings> = new EventEmitter<GameSettings>(false);
+    @Output() onSettingsUpdated: EventEmitter<GameSettings> = new EventEmitter<GameSettings>(false);
 
     constructor(public model:GameSettings,
                 private _router:Router,
@@ -18,7 +18,7 @@ export class SettingsComponent {
     }
 
     onSubmit() {
-        this.settingsUpdated.emit(this.model);
+        this.onSettingsUpdated.emit(this.model);
         this.go2game();
     }
 

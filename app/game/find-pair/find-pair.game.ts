@@ -1,24 +1,28 @@
-import {ICard} from "../../card/icard";
 import {Injectable} from "angular2/core";
+import {ICard} from "../../card/icard";
 import {IGame} from "../igame";
 import {shuffle} from "../../util";
 import {ICardService} from "../../card/icard.service";
 import {GameSettings} from "../../settings/settings";
+import {IPubSub} from "../../lib/pubsub/ipubsub";
+import {PubSub} from "../../lib/pubsub/pubsub";
 
 @Injectable()
 export class FindPairGame implements IGame {
     cards:ICard[] = [];
     title:string = "Find a pair";
+    onGameOver = new PubSub<void>();
 
     private selectedCard:ICard = null;
 
     constructor(private _service1:ICardService,
                 private _service2:ICardService,
-                private _isNight:boolean) {
+                private _isNight:boolean,
+                private _numOfPairs:number = 7) {
     }
 
     init() {
-        if(this.cards.length === 0) {
+        if (this.cards.length === 0) {
             return this.reload();
         }
 
@@ -51,6 +55,7 @@ export class FindPairGame implements IGame {
                     }
                 });
 
+                cards = cards.slice(0, this._numOfPairs * 2);
                 this.cards = shuffle(cards);
             } else {
                 console.log("Unexpected behavior");
@@ -63,7 +68,7 @@ export class FindPairGame implements IGame {
     select(card:ICard) {
         if (card.isPlayable) {
             card.isPlayable = false;
-            if(this._isNight) {
+            if (this._isNight) {
                 card.isFolded = false;
             }
 
@@ -79,6 +84,16 @@ export class FindPairGame implements IGame {
             } else {
                 this.selectedCard = card;
             }
+        }
+
+        this.checkGameOver();
+    }
+
+    private checkGameOver() {
+        var playable = this.cards.filter(c => c.isPlayable);
+
+        if (playable.length === 0) {
+            this.onGameOver.emit(null);
         }
     }
 
