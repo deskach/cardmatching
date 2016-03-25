@@ -1,6 +1,7 @@
 .idea/
 node_modules/
+jspm_packages/
 
-**/*.js
+app/**/*.js
 **/*.map
 **/*.log
