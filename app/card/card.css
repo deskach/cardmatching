@@ -1,0 +1,31 @@
+.crm-card {
+    font-size: 4em;
+    height: 2em;
+    width: 1.5em;
+    margin: 0.1em;
+    border: 0.1em solid #66b8da;
+    background-color: #66b8da;
+    float: left;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.crm-card-bw {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+}
+
+.crm-card-bw:hover {
+    font-weight: bolder;
+    -webkit-filter: grayscale(0); /* Chrome, Safari, Opera */
+    filter: grayscale(0);
+}
+
+.crm-card-not-playable {
+    border-color: dodgerblue;
+}
+
+.img-responsive {
+    height: 100%;
+    width: 100%;
+}

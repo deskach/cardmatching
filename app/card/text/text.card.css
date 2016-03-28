@@ -1,0 +1,9 @@
+.crm-text-card {
+    background-color: white;
+    text-align: center;
+    height: 1.8em;
+}
+
+.crm-text-card-not-playable {
+    background-color: lightgreen;
+}
