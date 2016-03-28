@@ -16,9 +16,9 @@
 }
 
 .crm-card-bw:hover {
+    font-weight: bolder;
     -webkit-filter: grayscale(0); /* Chrome, Safari, Opera */
     filter: grayscale(0);
-    font-weight: bolder;
 }
 
 .crm-card-not-playable {
