@@ -15,7 +15,7 @@
   },
   "license": "GPL-3.0",
   "dependencies": {
-    "angular2": "^2.0.0-beta.0",
+    "angular2": "^2.0.0-beta.12",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.1",
     "systemjs": "^0.19.6"
@@ -23,6 +23,14 @@
   "devDependencies": {
     "jasmine-core": "^2.4.1",
     "lite-server": "^2.1.0",
-    "typescript": "^1.7.3"
+    "typescript": "^1.8.9"
+  },
+  "jspm": {
+    "dependencies": {
+      "angular2": "npm:angular2@2.0.0-beta.12"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.8.9"
+    }
   }
 }
