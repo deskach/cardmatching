@@ -1,9 +1,13 @@
-export interface IPubSubCallback<T> {
-    (value:T): any;
+export interface IPubSubMessage {
+    message:string
 }
 
-export interface IPubSub<T> {
-    subscribe(callback: IPubSubCallback<T>);
+export interface IPubSubCallback {
+    (value:IPubSubMessage):void;
+}
+
+export interface IPubSub {
+    subscribe(callback:IPubSubCallback);
     unsubscribe();
-    emit(value: T);
+    emit(value:IPubSubMessage);
 }

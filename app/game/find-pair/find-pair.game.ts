@@ -3,15 +3,13 @@ import {ICard} from "../../card/icard";
 import {IGame} from "../igame";
 import {shuffle} from "../../util";
 import {ICardService} from "../../card/icard.service";
-import {GameSettings} from "../../settings/settings";
-import {IPubSub} from "../../lib/pubsub/ipubsub";
 import {PubSub} from "../../lib/pubsub/pubsub";
 
 @Injectable()
 export class FindPairGame implements IGame {
     cards:ICard[] = [];
     title:string = "Find a pair";
-    onGameOver = new PubSub<void>();
+    onGameOver = new PubSub();
 
     private selectedCard:ICard = null;
 
@@ -91,7 +89,7 @@ export class FindPairGame implements IGame {
         var playable = this.cards.filter(c => c.isPlayable);
 
         if (playable.length === 0) {
-            this.onGameOver.emit(null);
+            this.onGameOver.emit({message: "Game Over"});
         }
     }
 

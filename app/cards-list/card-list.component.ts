@@ -40,7 +40,10 @@ export class CardListComponent implements OnInit {
             this.cards = this._game.cards;
             this.isGameOver = this._game.cards.filter(c => c.isPlayable).length === 0;
             this._title.setTitle(this._game.title);
-            this._game.onGameOver.subscribe(() => this.isGameOver = true);
+            this._game.onGameOver.subscribe(() => {
+                this.isGameOver = true;
+                this._game.onGameOver.unsubscribe();
+            });
         });
     }
 

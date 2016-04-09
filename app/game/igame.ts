@@ -4,7 +4,7 @@ import {IPubSub} from "../lib/pubsub/ipubsub";
 export interface IGame {
     cards:ICard[];
     title:string;
-    onGameOver: IPubSub<void>;
+    onGameOver: IPubSub;
 
     init():Promise<any>;
     reload():Promise<any>;
