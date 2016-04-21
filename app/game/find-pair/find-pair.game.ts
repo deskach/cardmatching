@@ -32,11 +32,11 @@ export class FindPairGame implements IGame {
 
         result.then((values) => {
             if (values.length === 2) {
-                let cards = [];
-                let cards1 = shuffle(values[0]).slice(0, this._numOfPairs);
+                let cards:ICard[] = [];
+                let cards1:ICard[] = shuffle(values[0]).slice(0, this._numOfPairs);
 
                 cards1.forEach((c1) => {
-                    let search = values[1].filter(c => c.id === c1.id);
+                    let search = values[1].filter((c:ICard) => c.id === c1.id);
 
                     if (search.length > 0) {
                         let card1 = c1.clone();

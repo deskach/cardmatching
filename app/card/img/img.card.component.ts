@@ -20,5 +20,3 @@ import {ImgCard} from "./img.card";
 export class ImgCardComponent {
     public card:ImgCard;
 }
-
-//class="crm-card thumbnail"
