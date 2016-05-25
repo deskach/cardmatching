@@ -1,8 +1,6 @@
 .idea/
-node_modules/
 jspm_packages/
 
-config.js
 app/**/*.js
-**/*.map
-**/*.log
+app/**/*.map
+app/**/*.log
