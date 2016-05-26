@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Cardmatching -  find sets of matching cards to win.",
   "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "test": "live-server --open=unit-tests.html",
-    "live": "live-server",
-    "lite": "lite-server"
+    "typings": "typings"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "jasmine-core": "^2.4.1",
     "lite-server": "^2.1.0",
-    "typescript": "^1.8.9"
+    "typescript": "^1.8.9",
+    "typings":"^1.0.4"
   }
 }

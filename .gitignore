@@ -5,3 +5,4 @@ app/**/*.js
 app/**/*.map
 app/**/*.log
 node_modules/lite-server/
+node_modules/.bin/
