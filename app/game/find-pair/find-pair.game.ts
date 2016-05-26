@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {ICard} from "../../card/icard";
 import {IGame} from "../igame";
 import {shuffle} from "../../util";
@@ -24,7 +24,7 @@ export class FindPairGame implements IGame {
             return this.reload();
         }
 
-        return Promise.resolve();
+        return Promise.all([]);
     }
 
     reload() {

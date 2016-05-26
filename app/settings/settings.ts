@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 
 //TODO: Implement number-of-cards setting
 //TODO: Implement 'old values' by introducing currValues inside SettingsComponent

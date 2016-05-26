@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {ImgCard} from "./img.card";
 import {CardServiceBase} from "../card.service";
 

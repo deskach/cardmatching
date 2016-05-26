@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Output}   from 'angular2/core';
-import {Router} from "angular2/router";
-import {Title} from "angular2/src/platform/browser/title";
+import {Component, EventEmitter, Output}   from '@angular/core';
+import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser/src/browser/title";
 import {GameSettings} from "./settings";
 
 @Component({
@@ -11,10 +11,11 @@ export class SettingsComponent {
     gameTypes:string[] = GameSettings.gameTypes;
     @Output() onSettingsUpdated: EventEmitter<GameSettings> = new EventEmitter<GameSettings>(false);
 
+    private _title = new Title();
+
     constructor(public model:GameSettings,
-                private _router:Router,
-                title:Title) {
-        title.setTitle('Game settings');
+                private _router:Router) {
+        //this._title.setTitle('Game settings');
     }
 
     onSubmit() {

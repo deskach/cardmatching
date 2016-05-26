@@ -1,6 +1,5 @@
-import {Component, EventEmitter, provide, ViewChild}   from 'angular2/core';
-import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Title} from "angular2/src/platform/browser/title";
+import {Component, EventEmitter, provide, ViewChild}   from '@angular/core';
+import {Router, Routes, ROUTER_DIRECTIVES} from '@angular/router';
 import {CardListComponent} from "./cards-list/card-list.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {GameSettings} from "./settings/settings";
@@ -10,29 +9,32 @@ import {GameFactory} from "./game/game-factory";
     selector: 'my-app',
     templateUrl: 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [GameSettings, Title, GameFactory]
+    providers: [GameSettings, GameFactory]
 })
-@RouteConfig([
-    {path: '/cards', name: 'Cards', component: CardListComponent, useAsDefault: true},
-    {path: '/settings', name: 'Settings', component: SettingsComponent}
+@Routes([
+    {path: '/cards', component: CardListComponent},
+    {path: '/settings', component: SettingsComponent},
+    {path: '*', component: CardListComponent},
 ])
 export class AppComponent {
-    activeTab = 'cards';
+    public activeTab:string = 'cards';
 
     @ViewChild(SettingsComponent) private stsComp:SettingsComponent;
+    @ViewChild(CardListComponent) private cardList:CardListComponent;
 
     constructor(router:Router, gameFactory:GameFactory) {
         let subs = null; //TODO: refactor this when there is a way to pass arguments into router-outlet
 
-        router.subscribe((value) => {
-            this.activeTab = value;
-
+        router.changes.subscribe(() => {
             if(subs) {
                 subs.unsubscribe();
             }
 
             if (this.stsComp) {
+                this.activeTab = "cards";
                 subs = this.stsComp.onSettingsUpdated.subscribe(() => gameFactory.updateInstance());
+            } else if (this.cardList) {
+                this.activeTab = "settings";
             }
         });
     }

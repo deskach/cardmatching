@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {GameSettings} from "../settings/settings";
 import {IGame} from "./igame";
 import {FindPairGame} from "./find-pair/find-pair.game";

@@ -1,8 +1,8 @@
-import {Component, OnInit, EventEmitter, Output}   from 'angular2/core';
-import {NgSwitch, NgSwitchWhen} from "angular2/common";
+import {Component, OnInit, EventEmitter, Output}   from '@angular/core';
+import {NgSwitch, NgSwitchWhen} from "@angular/common";
 import {ICard} from "../card/icard";
 import {IGame} from "../game/igame";
-import {Title} from "angular2/src/platform/browser/title";
+import {Title} from "@angular/platform-browser/src/browser/title";
 import {TextCardComponent} from "../card/text/text.card.component";
 import {ImgCardComponent} from "../card/img/img.card.component";
 import {GameFactory} from "../game/game-factory";
@@ -14,12 +14,13 @@ import {GameFactory} from "../game/game-factory";
 })
 export class CardListComponent implements OnInit {
     private _isGameOver:boolean;
+    private _title = new Title();
 
     private _game:IGame = null;
     public cards:ICard[];
     @Output() public onGameOver: EventEmitter<void> = new EventEmitter<void>(false);
 
-    constructor(private _gameFactory: GameFactory, private _title:Title) {
+    constructor(private _gameFactory: GameFactory) {
         this._game = this._gameFactory.getInstance();
     }
 
@@ -39,7 +40,7 @@ export class CardListComponent implements OnInit {
         this._game.init().then(() => {
             this.cards = this._game.cards;
             this.isGameOver = this._game.cards.filter(c => c.isPlayable).length === 0;
-            this._title.setTitle(this._game.title);
+            //this._title.setTitle(this._game.title);
             this._game.onGameOver.subscribe(() => {
                 this.isGameOver = true;
                 this._game.onGameOver.unsubscribe();
